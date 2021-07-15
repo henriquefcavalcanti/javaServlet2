@@ -15,7 +15,7 @@ public class ListaEmpresas {
 
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("listar empresas");
-		
+
 		Banco banco = new Banco();
 		List<Empresa> lista = banco.getEmpresas();
 
