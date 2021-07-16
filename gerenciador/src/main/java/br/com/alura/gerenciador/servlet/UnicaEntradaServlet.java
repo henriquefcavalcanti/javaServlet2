@@ -19,31 +19,31 @@ import br.com.alura.gerenciador.acao.RemoveEmpresa;
 public class UnicaEntradaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String paramAcao = request.getParameter("acao");
 
 		String nome = null;
 		if (paramAcao.equals("ListaEmpresas")) {
 			ListaEmpresas acao = new ListaEmpresas();
-//			acao.executa(request, response);
 			nome = acao.executa(request, response);
-			System.out.println(nome);
+
 		} else if (paramAcao.equals("RemoveEmpresa")) {
 			RemoveEmpresa acao = new RemoveEmpresa();
 			nome = acao.executa(request, response);
 
 		} else if (paramAcao.equals("MostraEmpresa")) {
 			MostraEmpresa acao = new MostraEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 
 		} else if (paramAcao.equals("AlteraEmpresa")) {
 			AlteraEmpresa acao = new AlteraEmpresa();
-			acao.executa(response, request);
+			nome = acao.executa(response, request);
 
 		} else if (paramAcao.equals("NovaEmpresa")) {
 			NovaEmpresa acao = new NovaEmpresa();
-			acao.executa(response, request);
+			nome = acao.executa(response, request);
 		}
 
 		String[] tipoEEndereco = nome.split(":");
