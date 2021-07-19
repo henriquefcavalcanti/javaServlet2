@@ -12,6 +12,8 @@
 
 <body>
 
+	<h5>Usuário Logado: ${ usuarioLogado.login }</h5>
+
 	<c:if test="${ not empty empresa }">
 		<p>Empresa ${ empresa } cadastrada com sucesso.</p>
 	</c:if>
