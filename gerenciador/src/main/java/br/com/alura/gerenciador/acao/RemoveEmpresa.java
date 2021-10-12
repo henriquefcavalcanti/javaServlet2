@@ -10,12 +10,12 @@ import br.com.alura.gerenciador.modelo.Banco;
 public class RemoveEmpresa implements Acao {
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		System.out.println("acao remover empresa");
+
+//		System.out.println("Ação: Removendo Empresa");
 
 		String paramId = request.getParameter("id");
+		System.out.println(paramId);
 		Integer id = Integer.valueOf(paramId);
-
-		System.out.println(id);
 
 		Banco banco = new Banco();
 		banco.removeEmpresa(id);

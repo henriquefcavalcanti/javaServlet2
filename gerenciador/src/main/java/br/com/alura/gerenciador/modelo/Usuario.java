@@ -25,7 +25,7 @@ public class Usuario {
 		if (!this.login.equals(login)) {
 			return false;
 		}
-
+		
 		if (!this.senha.equals(senha)) {
 			return false;
 		}

@@ -13,29 +13,28 @@ import br.com.alura.gerenciador.modelo.Empresa;
 
 public class AlteraEmpresa implements Acao {
 
-	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+
+//		System.out.println("Ação: Altera Empresa");
 
 		String nomeEmpresa = request.getParameter("nome");
-		String paramDataEmpresa = request.getParameter("dataAbertura");
+		String dataAberturaParam = request.getParameter("dataAbertura");
 		String paramId = request.getParameter("id");
 		Integer id = Integer.valueOf(paramId);
-
-		System.out.println("acao altera empresa " + id);
 
 		Date dataAbertura = null;
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			dataAbertura = sdf.parse(paramDataEmpresa);
+			dataAbertura = sdf.parse(dataAberturaParam);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
 
 		Banco banco = new Banco();
-		Empresa empresa = banco.buscaEmpresaPeloId(id);
+		Empresa empresa = banco.buscaEmpresaPelaId(id);
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(dataAbertura);
-
-//		response.sendRedirect("entrada?acao=ListaEmpresas");
 
 		return "redirect:entrada?acao=ListaEmpresas";
 

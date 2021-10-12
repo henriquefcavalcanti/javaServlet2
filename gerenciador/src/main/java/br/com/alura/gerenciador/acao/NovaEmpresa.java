@@ -1,7 +1,6 @@
 package br.com.alura.gerenciador.acao;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,17 +14,16 @@ import br.com.alura.gerenciador.modelo.Empresa;
 public class NovaEmpresa implements Acao {
 
 	public String executa(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		System.out.println("acao nova empresa");
+			throws IOException, ServletException {
 
 		String nomeEmpresa = request.getParameter("nome");
-		String paramDataEmpresa = request.getParameter("dataAbertura");
+		String dataAberturaParam = request.getParameter("dataAbertura");
 
 		Date dataAbertura = null;
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			dataAbertura = sdf.parse(paramDataEmpresa);
-		} catch (ParseException e) {
+			dataAbertura = sdf.parse(dataAberturaParam);
+		} catch (Exception e) {
 			throw new ServletException(e);
 		}
 
@@ -36,12 +34,9 @@ public class NovaEmpresa implements Acao {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 
-		System.out.println("Cadastrando nova Empresa = " + nomeEmpresa);
-
 		request.setAttribute("empresa", empresa.getNome());
 
 		return "redirect:entrada?acao=ListaEmpresas";
-
 	}
 
 }

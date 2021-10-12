@@ -1,34 +1,30 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-<c:url value="/entrada" var="linkEntradaServlet" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<c:url value="/entrada" var="linkEntradaServlet"/>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
 </head>
 
 <body>
 
-	<form action="${ linkEntradaServlet }" method="POST">
+	<c:import url="logout-parcial.jsp"/>
 
-		<label for="nome">Nome</label> 
-		<input type="text" id="nome" name="nome" value="${ empresa.nome }">
-
-		<fmt:formatDate value="${ empresa.dataAbertura }" pattern="dd/MM/yyyy" var="dataAbertura" />
-		<label for="dataAbertura">Data Abertura</label> 
-		<input type="text" id="dataAbertura" name="dataAbertura" value="${ dataAbertura }">
-
-		<input type="hidden" name="id" value="${ empresa.id }">
-		<input type="hidden" name="acao" value="AlteraEmpresa"> 
-		<input type="submit">
-
-	</form>
+    <form action="${ linkEntradaServlet }" method="POST">
+        <label for="nome">Nome da Empresa:</label>
+        <input type="text" id="nome" name="nome" value="${ empresa.nome }">
+        
+        <label for="dataAbertura">Data de Abertura</label>
+        <input type="text" name="dataAbertura" id="dataAbertura" value="<fmt:formatDate value="${ empresa.dataAbertura }" pattern="dd/MM/yyyy"/>">
+        <input type="hidden" name="id" value="${ empresa.id }">
+        <input type="hidden" name="acao" value="AlteraEmpresa">
+        
+        <input type="submit">
+    </form>
 
 </body>
 

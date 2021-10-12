@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class NovaEmpresaForm implements Acao {
 
-	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 
+//		System.out.println("abrindo formulário de nova empresa");
 		return "forward:formNovaEmpresa.jsp";
 
 	}
